@@ -1,0 +1,34 @@
+{
+  "name": "@hagmar/mosaik-slider",
+  "version": "0.0.1",
+  "description": "A slider with adjustable limits",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel ./src  --out-dir ./lib && cp src/slider.css lib",
+    "build:watch": "watch 'npm run build' ./src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://dummy.fcc.chalmers.se/sys/mosaik-slider.git"
+  },
+  "keywords": [
+    "slider",
+    "mosaik"
+  ],
+  "author": "Jonas Hagmar",
+  "license": "UNLICENSED",
+  "publishConfig": {
+    "registry": "http://swallow:20080"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.7.0",
+    "@babel/core": "^7.7.2",
+    "@babel/plugin-proposal-class-properties": "^7.7.0",
+    "@babel/preset-env": "^7.7.1",
+    "@babel/preset-react": "^7.7.0"
+  },
+  "dependencies": {
+    "react": "^16.12.0"
+  }
+}
