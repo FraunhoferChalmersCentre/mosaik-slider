@@ -1,6 +1,6 @@
 {
   "name": "@hagmar/mosaik-slider",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A slider with adjustable limits",
   "main": "lib/index.js",
   "scripts": {
