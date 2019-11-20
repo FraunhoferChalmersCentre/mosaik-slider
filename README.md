@@ -1,6 +1,6 @@
 # mosaik-datasheet
 
-[![Build Status](https://travis-ci.com/FraunhoferChalmersCentre/mosaik-slider.svg?branch=master)](https://travis-ci.com/FraunhoferChalmersCentre/mosaik-slider)
+[![Build Status](https://travis-ci.com/FraunhoferChalmersCentre/mosaik-slider.svg?branch=master)](https://travis-ci.com/FraunhoferChalmersCentre/mosaik-slider) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=FraunhoferChalmersCentre_mosaik-slider&metric=alert_status)](https://sonarcloud.io/dashboard?id=FraunhoferChalmersCentre_mosaik-slider)
 
 **mosaik-slider** is a React component for a slider with adjustable limits. The adjustment of the min/max handles is regulated by the magnitude of the offset of the drag position from the nominal handle position. Once in an increment/decrement zone, the adjustment is made every 100ms.
 
