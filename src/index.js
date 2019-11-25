@@ -31,6 +31,12 @@ export default class Slider extends Component {
       dragDelta: 0,          // current x delta when arrow is being dragged
     };
 
+    this.setHandleRef = this.setHandleRef.bind(this);
+    this.setRailRef = this.setRailRef.bind(this);
+    this.setSliderRef = this.setSliderRef.bind(this);
+    this.setLeftArrowRef = this.setLeftArrowRef.bind(this);
+    this.setRightArrowRef = this.setRightArrowRef.bind(this);
+
   }
 
   componentDidMount() {
@@ -61,15 +67,15 @@ export default class Slider extends Component {
 
   // functions to set the references to the different
   // parts of the slider
-  setHandleRef = (handle) => this.setState({ handle });
+  setHandleRef(handle) { this.setState({ handle }); }
 
-  setRailRef = (rail) => this.setState({ rail });
+  setRailRef(rail) { this.setState({ rail }); }
 
-  setSliderRef = (slider) => this.setState({ slider });
+  setSliderRef(slider) { this.setState({ slider }); }
 
-  setLeftArrowRef = (leftArrow) => this.setState({ leftArrow });
+  setLeftArrowRef(leftArrow) { this.setState({ leftArrow }); }
 
-  setRightArrowRef = (rightArrow) => this.setState({ rightArrow });
+  setRightArrowRef(rightArrow) { this.setState({ rightArrow }); }
 
   // get the min, max and value from the state or props depending
   // on whether the component is controlled or not
@@ -77,14 +83,13 @@ export default class Slider extends Component {
     const { min: propMin, max: propMax, value: propValue, onDrag } = this.props;
     const { min: stateMin, max: stateMax, value: stateValue, state } = this.state;
 
-    // if the user has provided an onDrag handler, then we use the
-    // prop value even when dragging. Otherwise we use the prop value
-    // if provided
+    // we use the state value either if the value is not provided by the parent
+    // or if the parent has not provided an onDrag handler during dragging
     let value;
-    if ((propValue !== undefined) && ((state !== states.DRAGGING_HANDLE) || (onDrag))) {
-      value = propValue;
-    } else {
+    if ( propValue === undefined || (state === states.DRAGGING_HANDLE && !onDrag) ) {
       value = stateValue;
+    } else {
+      value = propValue;
     }
 
     // choose prop values over state values if provided
@@ -102,9 +107,8 @@ export default class Slider extends Component {
 
     if (onDrag) {
       onDrag(value);
-    } else {
-      this.setState({ value });
     }
+    this.setState({ value });
   }
 
   // set the value, either when dragging is finished
@@ -126,9 +130,8 @@ export default class Slider extends Component {
 
     if (onChangeMin) {
       onChangeMin(min);
-    } else {
-      this.setState({ min });
     }
+    this.setState({ min });
   }
 
   // set maximum value, either controlled through onChangeMax
@@ -138,9 +141,8 @@ export default class Slider extends Component {
 
     if (onChangeMax) {
       onChangeMax(max);
-    } else {
-      this.setState({ max });
     }
+    this.setState({ max });
   }
 
   // Stop the browser from propagating or using the default
@@ -211,7 +213,7 @@ export default class Slider extends Component {
 
       if (newMin !== min) this.setMin(newMin);
 
-    } else if (state === states.DRAGGING_RIGHT_ARROW) {
+    } else /* DRAGGING_RIGHT_ARROW) */ {
       const f = (direction === 1) ? Math.ceil : Math.floor;
 
       let newMax = this.toFixed(min + newSpan, adjustmentMagnitude, f);
@@ -229,7 +231,7 @@ export default class Slider extends Component {
 
   handleMouseDown = (e) => {
 
-    if (this.props.disbled) return;
+    if (this.props.disabled) return;
 
     const { handle, leftArrow, rightArrow, slider } = this.state;
 
@@ -340,7 +342,7 @@ export default class Slider extends Component {
   // handler when the user releases the button
   handleMouseUp = (e) => {
 
-    if (this.props.disbled) return;
+    if (this.props.disabled) return;
 
     const { state } = this.state;
 
@@ -407,7 +409,7 @@ export default class Slider extends Component {
   // handler for mousemove
   handleMouseMove = (e) => {
 
-    if (this.props.disbled) return;
+    if (this.props.disabled) return;
 
     const { state } = this.state;
 

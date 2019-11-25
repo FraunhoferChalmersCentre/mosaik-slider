@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Slider Manipulation it responds correctly to dragging the handle when uncontrolled without onChangeValue 1`] = `
+<Slider>
+  <div
+    className="fcc-slider"
+  >
+    <div
+      className="fcc-slider-right-arrow"
+    />
+    <div
+      className="fcc-slider-left-arrow"
+    />
+    <div
+      className="fcc-slider-rail"
+    />
+    <div
+      className="fcc-slider-handle"
+      style={
+        Object {
+          "left": 594,
+        }
+      }
+    />
+  </div>
+</Slider>
+`;
+
+exports[`Slider Mounting and unmounting snapshot renders (disabled) 1`] = `
+<Slider
+  disabled={true}
+>
+  <div
+    className="fcc-slider"
+  >
+    <div
+      className="fcc-slider-right-arrow"
+    />
+    <div
+      className="fcc-slider-left-arrow"
+    />
+    <div
+      className="fcc-slider-rail"
+    />
+  </div>
+</Slider>
+`;
+
+exports[`Slider Mounting and unmounting snapshot renders 1`] = `
+<Slider>
+  <div
+    className="fcc-slider"
+  >
+    <div
+      className="fcc-slider-right-arrow"
+    />
+    <div
+      className="fcc-slider-left-arrow"
+    />
+    <div
+      className="fcc-slider-rail"
+    />
+    <div
+      className="fcc-slider-handle"
+      style={
+        Object {
+          "left": 0,
+        }
+      }
+    />
+  </div>
+</Slider>
+`;
